@@ -1,0 +1,312 @@
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<!-- Tailwind CSS CDN for styling --><script src="https://cdn.tailwindcss.com"></script><!-- React and ReactDOM CDNs --><script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script><script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script><!-- Babel CDN to compile JSX --><script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style type="text/css">body {
+      font-family: 'Inter', sans-serif;
+    }
+</style>
+<!-- The root element where our React app will be rendered -->
+<div id="root">&nbsp;</div>
+<!-- The script tag for our React component --><script type="text/babel">
+    const { useState } = React;
+
+    // Main App component for the Dosha Quiz
+    function App() {
+      // Define the Dosha descriptions to be shown on the results page
+      const doshaDescriptions = {
+        Vata: {
+          title: 'Vata (Wind & Space)',
+          description: 'Vata is characterized by light, dry, and cool qualities. People with a dominant Vata Dosha are often creative, energetic, and quick-thinking. However, they may also be prone to anxiety and have irregular habits.',
+          color: 'text-blue-500',
+        },
+        Pitta: {
+          title: 'Pitta (Fire & Water)',
+          description: 'Pitta is characterized by hot, sharp, and oily qualities. Individuals with a dominant Pitta Dosha are typically intelligent, ambitious, and strong-willed. They can be prone to irritability and perfectionism.',
+          color: 'text-orange-500',
+        },
+        Kapha: {
+          title: 'Kapha (Earth & Water)',
+          description: 'Kapha is characterized by heavy, slow, and moist qualities. Those with a dominant Kapha Dosha are generally calm, stable, and compassionate. They may be resistant to change and have a tendency to be sentimental.',
+          color: 'text-green-500',
+        },
+      };
+
+      // Define the quiz questions based on the user's provided traits
+      const questions = [
+        {
+          questionText: 'What is your typical body size?',
+          answerOptions: [
+            { answerText: 'Small Frame', dosha: 'Vata' },
+            { answerText: 'Medium Frame', dosha: 'Pitta' },
+            { answerText: 'Large Frame', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How would you describe your weight?',
+          answerOptions: [
+            { answerText: 'Thin, hard to gain', dosha: 'Vata' },
+            { answerText: 'Medium Weight', dosha: 'Pitta' },
+            { answerText: 'Heavy, Easy to Gain', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'What is your typical skin type?',
+          answerOptions: [
+            { answerText: 'Dry, Rough', dosha: 'Vata' },
+            { answerText: 'Soft, Med. Oily', dosha: 'Pitta' },
+            { answerText: 'Oily, Moist', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'What is your typical complexion?',
+          answerOptions: [
+            { answerText: 'Darker', dosha: 'Vata' },
+            { answerText: 'Pink to Red', dosha: 'Pitta' },
+            { answerText: 'Pale, White', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'What is the amount of hair on your head?',
+          answerOptions: [
+            { answerText: 'Average', dosha: 'Vata' },
+            { answerText: 'Thinning', dosha: 'Pitta' },
+            { answerText: 'Thick', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'What is your hair type?',
+          answerOptions: [
+            { answerText: 'Dry', dosha: 'Vata' },
+            { answerText: 'Medium', dosha: 'Pitta' },
+            { answerText: 'Oily', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How is your endurance?',
+          answerOptions: [
+            { answerText: 'Poor', dosha: 'Vata' },
+            { answerText: 'Good', dosha: 'Pitta' },
+            { answerText: 'Excellent', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How would you describe your strength?',
+          answerOptions: [
+            { answerText: 'Poor', dosha: 'Vata' },
+            { answerText: 'Good', dosha: 'Pitta' },
+            { answerText: 'Excellent', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How would you describe your mental activity?',
+          answerOptions: [
+            { answerText: 'Quick Mind, Restless', dosha: 'Vata' },
+            { answerText: 'Sharp Intellect, Agressive', dosha: 'Pitta' },
+            { answerText: 'Calm, Steady, Stable', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How is your memory?',
+          answerOptions: [
+            { answerText: 'Short-term is Best', dosha: 'Vata' },
+            { answerText: 'Good General Memory', dosha: 'Pitta' },
+            { answerText: 'Long-Term is Best', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How do you react to different weather conditions?',
+          answerOptions: [
+            { answerText: 'Aversion to Cold', dosha: 'Vata' },
+            { answerText: 'Aversion to Heat', dosha: 'Pitta' },
+            { answerText: 'Aversion to Damp, Cool', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How do you react to stress?',
+          answerOptions: [
+            { answerText: 'Excite Very Quickly', dosha: 'Vata' },
+            { answerText: 'Anger Easily, Quick Temper', dosha: 'Pitta' },
+            { answerText: 'Slow to get Irritated', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How is your hunger?',
+          answerOptions: [
+            { answerText: 'Irregular', dosha: 'Vata' },
+            { answerText: 'Sharp, Needs Food', dosha: 'Pitta' },
+            { answerText: 'Can Easily Miss Meals', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'What are your food and drink preferences?',
+          answerOptions: [
+            { answerText: 'Prefer Warm', dosha: 'Vata' },
+            { answerText: 'Prefer Cold', dosha: 'Pitta' },
+            { answerText: 'Prefer Dry & Warm', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How quickly do you eat?',
+          answerOptions: [
+            { answerText: 'Quickly', dosha: 'Vata' },
+            { answerText: 'Medium Speed', dosha: 'Pitta' },
+            { answerText: 'Slowly', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How would you describe your financial habits?',
+          answerOptions: [
+            { answerText: "Doesn't Save, Spends Quickly", dosha: 'Vata' },
+            { answerText: 'Saves but Big Spender', dosha: 'Pitta' },
+            { answerText: 'Saves Regularly, Accumulates Wealth', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How would you describe your sex drive?',
+          answerOptions: [
+            { answerText: 'Variable, irregular', dosha: 'Vata' },
+            { answerText: 'Moderate', dosha: 'Pitta' },
+            { answerText: 'Strong', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How is your elimination?',
+          answerOptions: [
+            { answerText: 'Dry, Hard, Constipation', dosha: 'Vata' },
+            { answerText: 'Many, Soft to Normal', dosha: 'Pitta' },
+            { answerText: 'Heavy, Slow, Thick, Regular.', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'What is your walking pace?',
+          answerOptions: [
+            { answerText: 'Fast, Quickly', dosha: 'Vata' },
+            { answerText: 'Average', dosha: 'Pitta' },
+            { answerText: 'Slow & Steady', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How would you describe your voice?',
+          answerOptions: [
+            { answerText: 'High Pitch, Fast', dosha: 'Vata' },
+            { answerText: 'Medium Pitch, Clear', dosha: 'Pitta' },
+            { answerText: 'Low Pitch, Deep, Regular', dosha: 'Kapha' },
+          ],
+        },
+        {
+          questionText: 'How quickly do your moods change?',
+          answerOptions: [
+            { answerText: 'Changes Quickly', dosha: 'Vata' },
+            { answerText: 'Slowly Changing', dosha: 'Pitta' },
+            { answerText: 'Steady, Non-Changing', dosha: 'Kapha' },
+          ],
+        },
+      ];
+
+      // State variables for the quiz
+      const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+      const [scores, setScores] = useState({ Vata: 0, Pitta: 0, Kapha: 0 });
+      const [showResults, setShowResults] = useState(false);
+      const [dominantDoshas, setDominantDoshas] = useState([]);
+
+      // Handle the user's answer click
+      const handleAnswerClick = (doshaType) => {
+        // Create a local variable with the next scores to use for immediate calculation
+        const nextScores = { ...scores, [doshaType]: scores[doshaType] + 1 };
+        setScores(nextScores);
+
+        const nextQuestionIndex = currentQuestionIndex + 1;
+
+        if (nextQuestionIndex < questions.length) {
+          setCurrentQuestionIndex(nextQuestionIndex);
+        } else {
+          // All questions are answered. Now, calculate the dominant doshas
+          const doshaNames = Object.keys(nextScores);
+          const maxScore = Math.max(...Object.values(nextScores));
+          const tiedDoshas = doshaNames.filter(dosha => nextScores[dosha] === maxScore);
+          setDominantDoshas(tiedDoshas);
+          // Then, show the results page
+          setShowResults(true);
+        }
+      };
+
+      // Function to restart the quiz
+      const restartQuiz = () => {
+        setCurrentQuestionIndex(0);
+        setScores({ Vata: 0, Pitta: 0, Kapha: 0 });
+        setShowResults(false);
+        setDominantDoshas([]);
+      };
+
+      // Main JSX structure for the quiz app
+      return (
+        <div className="flex items-start justify-center min-h-screen p-4 font-inter">
+          <div className="relative z-10 w-full max-w-2xl bg-white rounded-2xl shadow-xl p-8 md:p-12 mt-8">
+            <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Dosha Personality Quiz</h1>
+            
+            {showResults ? (
+              <div className="text-center">
+                <h2 className="text-2xl font-semibold mb-4 text-gray-700">Quiz Complete!</h2>
+                <div className="flex flex-col space-y-2 mb-8 text-lg text-gray-600">
+                  <p>Vata Score: <span className="font-bold text-blue-500">{scores.Vata}</span></p>
+                  <p>Pitta Score: <span className="font-bold text-orange-500">{scores.Pitta}</span></p>
+                  <p>Kapha Score: <span className="font-bold text-green-500">{scores.Kapha}</span></p>
+                </div>
+                
+                {/* Display descriptions for ALL three doshas */}
+                {Object.keys(doshaDescriptions).map((dosha, index) => {
+                  const doshaInfo = doshaDescriptions[dosha];
+                  const isDominant = dominantDoshas.includes(dosha);
+                  const borderColor = isDominant ? doshaInfo.color.replace('text-', '#').replace('500', '500') : '#d1d5db';
+                  
+                  return (
+                    <div
+                      key={index}
+                      className={`text-left mb-6 p-4 rounded-xl border-l-4 transition-all duration-300 ${isDominant ? 'bg-gray-50' : 'bg-white'}`}
+                      style={{ borderColor: borderColor }}
+                    >
+                      <h3 className={`text-xl font-bold ${isDominant ? doshaInfo.color : 'text-gray-700'} mb-2`}>{doshaInfo.title}</h3>
+                      <p className={`text-gray-700 ${isDominant ? '' : 'text-sm'}`}>{doshaInfo.description}</p>
+                    </div>
+                  );
+                })}
+
+                <button
+                  onClick={restartQuiz}
+                  className="w-full py-3 px-6 bg-purple-600 text-white font-semibold rounded-xl shadow-md hover:bg-purple-700 transition-colors duration-200 mt-4"
+                >
+                  Restart Quiz
+                </button>
+              </div>
+            ) : (
+              <div>
+                <div className="mb-8">
+                  <div className="text-sm text-gray-500 mb-2">
+                    Question {currentQuestionIndex + 1} of {questions.length}
+                  </div>
+                  <h2 className="text-xl font-medium text-gray-800">
+                    {questions[currentQuestionIndex].questionText}
+                  </h2>
+                </div>
+                <div className="space-y-4">
+                  {questions[currentQuestionIndex].answerOptions.map((option, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleAnswerClick(option.dosha)}
+                      className="w-full py-4 px-6 text-left text-gray-700 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-200 hover:bg-indigo-100"
+                    >
+                      {option.answerText}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+    
+    // Render the App component into the root div
+    const rootElement = ReactDOM.createRoot(document.getElementById('root'));
+    rootElement.render(<App />);
+  </script>
