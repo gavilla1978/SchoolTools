@@ -1,227 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solo Practice Pricing Calculator</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #eff6ff; /* A very light blue */
-            color: #4b5563; /* Gray text */
-        }
-        /* Hides the default up/down number input arrows */
-        input[type=number]::-webkit-inner-spin-button, 
-        input[type=number]::-webkit-outer-spin-button { 
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        input[type=number] {
-            -moz-appearance: textfield;
-        }
-        .idea-list {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .idea-list.open {
-            max-height: 200px; /* Adjust based on content height */
-        }
-        .idea-item {
-            cursor: pointer;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            transition: background-color 0.2s;
-        }
-        .idea-item:hover {
-            background-color: #dbeafe;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Menu Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #eff6ff; /* A very light blue */
+            color: #4b5563; /* Gray text */
+        }
+        /* Hides the default up/down number input arrows */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        .idea-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .idea-list.open {
+            max-height: 200px; /* Adjust based on content height */
+        }
+        .idea-item {
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            transition: background-color 0.2s;
+        }
+        .idea-item:hover {
+            background-color: #dbeafe;
+        }
+    </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4">
 
-        <div class="bg-white p-8 rounded-3xl shadow-2xl w-full max-w-2xl">
-                <div class="text-center mb-6 bg-blue-100 p-6 rounded-2xl shadow-inner">
-            <img src="https://lirp.cdn-website.com/fdd2293f/dms3rep/multi/opt/spatech-logo-1920w.png" alt="Spa Tech Institute Logo" class="mx-auto w-32 h-auto rounded-lg shadow-lg mb-4">
-            <h1 class="text-3xl font-bold text-gray-800">Solo Practice</h1>
-            <p class="text-sm italic text-gray-500">The Business Side of Beauty & Bodywork</p>
-        </div>
+    <!-- Main Content Card -->
+    <div class="bg-white p-8 rounded-3xl shadow-2xl w-full max-w-2xl">
+        <!-- Brand Header with Logo and Tagline -->
+        <div class="text-center mb-6 bg-blue-100 p-6 rounded-2xl shadow-inner">
+<img src="https://lirp.cdn-website.com/fdd2293f/dms3rep/multi/opt/spatech-logo-1920w.png" alt="Spa Tech Institute Logo" class="mx-auto w-32 h-auto shadow-lg mb-4">
+                        <h1 class="text-3xl font-bold text-gray-800">Service Calculator</h1>
+            <p class="text-sm italic text-gray-500">Determine Your Menu Pricing</p>
+        </div>
 
-        <p class="text-center text-gray-600 mb-6">
-            Enter your services and costs to get a professionally calculated price.
-        </p>
+        <p class="text-center text-gray-600 mb-6">
+            Enter your services and costs to get a professionally calculated price.
+        </p>
 
-                <div class="space-y-4 p-6 bg-blue-100 rounded-2xl shadow-lg">
-            <h2 class="text-xl font-bold text-center">Add a New Service</h2>
-                        <div>
-                <label for="service-name" class="block text-sm font-medium text-gray-700">Service Name</label>
-                <div class="flex items-center mt-1">
-                    <input type="text" id="service-name" placeholder="e.g., Signature Facial" class="flex-grow rounded-md border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
-                    <button onclick="toggleIdeas('service-name')" class="ml-2 bg-blue-200 text-gray-600 text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-300 transition-all duration-300">
-                        Ideas?
-                    </button>
-                </div>
-                <div id="service-name-ideas" class="idea-list hidden mt-2 text-sm text-gray-500 pl-4 border-l-2 border-gray-300">
-                    <div onclick="selectIdea('service-name', 'Signature Facial')" class="idea-item">• Signature Facial</div>
-                    <div onclick="selectIdea('service-name', 'Deep Tissue Massage')" class="idea-item">• Deep Tissue Massage</div>
-                    <div onclick="selectIdea('service-name', 'Chemical Peel')" class="idea-item">• Chemical Peel</div>
-                    <div onclick="selectIdea('service-name', 'Waxing Service')" class="idea-item">• Waxing Service</div>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div>
-                    <label for="service-time" class="block text-sm font-medium text-gray-700">Time (min)</label>
-                    <div class="flex items-center mt-1">
-                        <input type="number" id="service-time" placeholder="e.g., 60" class="w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
-                    </div>
-                </div>
+        <!-- Input Form for a New Service -->
+        <div class="space-y-4 p-6 bg-blue-100 rounded-2xl shadow-lg">
+            <h2 class="text-xl font-bold text-center">Add a New Service</h2>
+            <!-- Service Name Input -->
+            <div>
+                <label for="service-name" class="block text-sm font-medium text-gray-700">Service Name</label>
+                <div class="flex items-center mt-1">
+                    <input type="text" id="service-name" placeholder="e.g., Signature Facial" class="flex-grow rounded-md border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                    <button onclick="toggleIdeas('service-name')" class="ml-2 bg-blue-200 text-gray-600 text-sm font-semibold py-2 px-4 rounded-full hover:bg-blue-300 transition-all duration-300">
+                        Ideas?
+                    </button>
+                </div>
+                <div id="service-name-ideas" class="idea-list hidden mt-2 text-sm text-gray-500 pl-4 border-l-2 border-gray-300">
+                    <div onclick="selectIdea('service-name', 'Signature Facial')" class="idea-item">• Signature Facial</div>
+                    <div onclick="selectIdea('service-name', 'Lash Extensions')" class="idea-item">•Lash Extensions</div>
+                    <div onclick="selectIdea('service-name', 'Chemical Peel')" class="idea-item">• Chemical Peel</div>
+                    <div onclick="selectIdea('service-name', 'Waxing Service')" class="idea-item">• Waxing Service</div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Service Time Input -->
+                <div>
+                    <label for="service-time" class="block text-sm font-medium text-gray-700">Time (min)</label>
+                    <div class="flex items-center mt-1">
+                        <input type="number" id="service-time" placeholder="e.g., 60" class="w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
 
-                                <div>
-                    <label for="service-materials" class="block text-sm font-medium text-gray-700">Materials Cost ($)</label>
-                    <div class="flex items-center mt-1">
-                        <input type="number" id="service-materials" placeholder="e.g., 15" class="w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
-                    </div>
-                </div>
+                <!-- Service Materials Input -->
+                <div>
+                    <label for="service-materials" class="block text-sm font-medium text-gray-700">Materials Cost ($)</label>
+                    <div class="flex items-center mt-1">
+                        <input type="number" id="service-materials" placeholder="e.g., 15" class="w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
 
-                                <div>
-                    <label for="service-rate" class="block text-sm font-medium text-gray-700">Desired Hourly Rate ($)</label>
-                    <div class="flex items-center mt-1">
-                        <input type="number" id="service-rate" placeholder="e.g., 75" class="w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
-                    </div>
-                </div>
-            </div>
-            
-            <button onclick="addService()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105">
-                Add Service
-            </button>
-        </div>
+                <!-- Desired Rate Input -->
+                <div>
+                    <label for="service-rate" class="block text-sm font-medium text-gray-700">Desired Hourly Rate ($)</label>
+                    <div class="flex items-center mt-1">
+                        <input type="number" id="service-rate" placeholder="e.g., 75" class="w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="addService()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105">
+                Add Service
+            </button>
+        </div>
 
-                <div id="service-list" class="mt-8 space-y-4">
-                    </div>
+        <!-- Service List Display -->
+        <div id="service-list" class="mt-8 space-y-4">
+            <!-- Services will be rendered here -->
+        </div>
 
-                <div class="mt-6 flex gap-4">
-            <button id="save-button" onclick="saveServices()" class="flex-grow bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hidden">
-                Save Services
-            </button>
-            <button id="clear-button" onclick="clearServices()" class="flex-grow bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-4 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hidden">
-                Clear All
-            </button>
-        </div>
-        
-                <p id="status-message" class="text-center mt-4 text-gray-500"></p>
-    </div>
+        <!-- Save and Clear All Buttons -->
+        <div class="mt-6 flex gap-4">
+            <button id="save-button" onclick="saveServices()" class="flex-grow bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hidden">
+                Save Services
+            </button>
+            <button id="clear-button" onclick="clearServices()" class="flex-grow bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-4 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hidden">
+                Clear All
+            </button>
+        </div>
+        
+        <!-- Status Message -->
+        <p id="status-message" class="text-center mt-4 text-gray-500"></p>
+    </div>
 
-    <script>
-        let services = [];
+    <script>
+        let services = [];
 
-        const loadServices = () => {
-            const savedServices = localStorage.getItem('services');
-            if (savedServices) {
-                services = JSON.parse(savedServices);
-            }
-            renderServices();
-        };
+        const loadServices = () => {
+            const savedServices = localStorage.getItem('services');
+            if (savedServices) {
+                services = JSON.parse(savedServices);
+            }
+            renderServices();
+        };
 
-        const toggleIdeas = (fieldId) => {
-            const ideaList = document.getElementById(`${fieldId}-ideas`);
-            ideaList.classList.toggle('open');
-            ideaList.classList.toggle('hidden');
-        };
+        const toggleIdeas = (fieldId) => {
+            const ideaList = document.getElementById(`${fieldId}-ideas`);
+            ideaList.classList.toggle('open');
+            ideaList.classList.toggle('hidden');
+        };
 
-        const selectIdea = (fieldId, ideaText) => {
-            document.getElementById(fieldId).value = ideaText;
-            document.getElementById(`${fieldId}-ideas`).classList.remove('open');
-            document.getElementById(`${fieldId}-ideas`).classList.add('hidden');
-        };
+        const selectIdea = (fieldId, ideaText) => {
+            document.getElementById(fieldId).value = ideaText;
+            document.getElementById(`${fieldId}-ideas`).classList.remove('open');
+            document.getElementById(`${fieldId}-ideas`).classList.add('hidden');
+        };
 
-        const renderServices = () => {
-            const listDiv = document.getElementById('service-list');
-            listDiv.innerHTML = '';
-            if (services.length === 0) {
-                listDiv.innerHTML = `<p class="text-center text-gray-500 italic mt-4">Add your first service above to get started!</p>`;
-                document.getElementById('save-button').classList.add('hidden');
-                document.getElementById('clear-button').classList.add('hidden');
-                return;
-            }
+        const renderServices = () => {
+            const listDiv = document.getElementById('service-list');
+            listDiv.innerHTML = '';
+            if (services.length === 0) {
+                listDiv.innerHTML = `<p class="text-center text-gray-500 italic mt-4">Add your first service above to get started!</p>`;
+                document.getElementById('save-button').classList.add('hidden');
+                document.getElementById('clear-button').classList.add('hidden');
+                return;
+            }
 
-            document.getElementById('save-button').classList.remove('hidden');
-            document.getElementById('clear-button').classList.remove('hidden');
+            document.getElementById('save-button').classList.remove('hidden');
+            document.getElementById('clear-button').classList.remove('hidden');
 
-            services.forEach(service => {
-                const serviceDiv = document.createElement('div');
-                serviceDiv.className = 'bg-blue-100 p-4 rounded-xl shadow-md flex justify-between items-center';
-                serviceDiv.innerHTML = `
-                    <div class="flex-grow">
-                        <p class="font-bold text-lg">${service.name}</p>
-                        <p class="text-sm text-gray-600">Time: ${service.time} min | Materials: $${service.materials.toFixed(2)} | Desired Rate: $${service.rate}/hr</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-lg font-bold text-blue-600">Est. Price: $${service.price.toFixed(2)}</p>
-                    </div>
-                `;
-                listDiv.appendChild(serviceDiv);
-            });
-        };
+            services.forEach(service => {
+                const serviceDiv = document.createElement('div');
+                serviceDiv.className = 'bg-blue-100 p-4 rounded-xl shadow-md flex justify-between items-center';
+                serviceDiv.innerHTML = `
+                    <div class="flex-grow">
+                        <p class="font-bold text-lg">${service.name}</p>
+                        <p class="text-sm text-gray-600">Time: ${service.time} min | Materials: $${service.materials.toFixed(2)} | Desired Rate: $${service.rate}/hr</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-lg font-bold text-blue-600">Est. Price: $${service.price.toFixed(2)}</p>
+                    </div>
+                `;
+                listDiv.appendChild(serviceDiv);
+            });
+        };
 
-        const addService = () => {
-            const statusDiv = document.getElementById('status-message');
-            statusDiv.textContent = '';
-            const name = document.getElementById('service-name').value.trim();
-            const time = parseInt(document.getElementById('service-time').value.trim(), 10);
-            const materials = parseFloat(document.getElementById('service-materials').value.trim());
-            const rate = parseFloat(document.getElementById('service-rate').value.trim());
+        const addService = () => {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.textContent = '';
+            const name = document.getElementById('service-name').value.trim();
+            const time = parseInt(document.getElementById('service-time').value.trim(), 10);
+            const materials = parseFloat(document.getElementById('service-materials').value.trim());
+            const rate = parseFloat(document.getElementById('service-rate').value.trim());
 
-            if (!name || isNaN(time) || isNaN(materials) || isNaN(rate)) {
-                statusDiv.textContent = 'Please fill out all fields with valid numbers.';
-                statusDiv.className = 'text-center mt-4 text-red-500';
-                return;
-            }
+            if (!name || isNaN(time) || isNaN(materials) || isNaN(rate)) {
+                statusDiv.textContent = 'Please fill out all fields with valid numbers.';
+                statusDiv.className = 'text-center mt-4 text-red-500';
+                return;
+            }
 
-            const price = (rate / 60) * time + materials;
-            services.push({ name, time, materials, rate, price });
-            renderServices();
+            const price = (rate / 60) * time + materials;
+            services.push({ name, time, materials, rate, price });
+            renderServices();
 
-            // Clear inputs
-            document.getElementById('service-name').value = '';
-            document.getElementById('service-time').value = '';
-            document.getElementById('service-materials').value = '';
-            document.getElementById('service-rate').value = '';
+            // Clear inputs
+            document.getElementById('service-name').value = '';
+            document.getElementById('service-time').value = '';
+            document.getElementById('service-materials').value = '';
+            document.getElementById('service-rate').value = '';
 
-            statusDiv.textContent = 'Service added to the list!';
-            statusDiv.className = 'text-center mt-4 text-green-500';
-        };
+            statusDiv.textContent = 'Service added to the list!';
+            statusDiv.className = 'text-center mt-4 text-green-500';
+        };
 
-        const saveServices = () => {
-            const statusDiv = document.getElementById('status-message');
-            try {
-                localStorage.setItem('services', JSON.stringify(services));
-                statusDiv.textContent = 'Your services have been saved to this browser!';
-                statusDiv.className = 'text-center mt-4 text-green-500';
-            } catch (error) {
-                console.error("Error saving services:", error);
-                statusDiv.textContent = 'There was an error saving your services.';
-                statusDiv.className = 'text-center mt-4 text-red-500';
-            }
-        };
+        const saveServices = () => {
+            const statusDiv = document.getElementById('status-message');
+            try {
+                localStorage.setItem('services', JSON.stringify(services));
+                statusDiv.textContent = 'Your services have been saved to this browser!';
+                statusDiv.className = 'text-center mt-4 text-green-500';
+            } catch (error) {
+                console.error("Error saving services:", error);
+                statusDiv.textContent = 'There was an error saving your services.';
+                statusDiv.className = 'text-center mt-4 text-red-500';
+            }
+        };
 
-        const clearServices = () => {
-            const statusDiv = document.getElementById('status-message');
-            services = [];
-            localStorage.removeItem('services');
-            renderServices();
-            statusDiv.textContent = 'All services have been cleared.';
-            statusDiv.className = 'text-center mt-4 text-gray-500';
-        };
+        const clearServices = () => {
+            const statusDiv = document.getElementById('status-message');
+            services = [];
+            localStorage.removeItem('services');
+            renderServices();
+            statusDiv.textContent = 'All services have been cleared.';
+            statusDiv.className = 'text-center mt-4 text-gray-500';
+        };
 
-        window.onload = loadServices;
-        window.toggleIdeas = toggleIdeas;
-        window.selectIdea = selectIdea;
-        window.addService = addService;
-        window.saveServices = saveServices;
-        window.clearServices = clearServices;
-    </script>
+        window.onload = loadServices;
+        window.toggleIdeas = toggleIdeas;
+        window.selectIdea = selectIdea;
+        window.addService = addService;
+        window.saveServices = saveServices;
+        window.clearServices = clearServices;
+    </script>
 </body>
 </html>
