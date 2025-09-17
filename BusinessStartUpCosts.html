@@ -1,0 +1,172 @@
+<p>Business start up calculator</p>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .container {
+            max-width: 900px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .input-group label {
+            min-width: 150px;
+        }
+        .input-group input {
+            flex-grow: 1;
+        }
+        .section-header {
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .icon {
+            color: #6b7280;
+            margin-right: 0.5rem;
+            width: 24px;
+            text-align: center;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+</style>
+<div class="container mx-auto bg-white shadow-xl rounded-2xl p-8 sm:p-12">
+<div class="text-center mb-10">
+<img src="https://lirp.cdn-website.com/fdd2293f/dms3rep/multi/opt/spatech-logo-1920w.png" alt="Spa Tech Institute Logo" class="mx-auto w-32 h-auto shadow-lg mb-4">
+
+<h1 class="text-4xl font-bold text-gray-800 mb-2">Business Startup Calculator</h1>
+
+<p class="text-gray-500">Estimate your business expenses.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8"><!-- One-Time Costs Section -->
+<div>
+<h2 class="text-2xl font-bold text-gray-700 section-header flex items-center mb-4">One-Time Costs</h2>
+
+<div class="space-y-4">
+<div class="input-group"><label class="text-gray-700" for="licensing">Licensing &amp; Certifications</label> <input class="w-full border border-gray-300 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" id="licensing" type="number" value="0" /> <span class="tooltip"> <span class="tooltiptext">Costs for your professional license, initial certifications, and business registration.</span> </span></div>
+
+<div class="input-group"><label class="text-gray-700" for="setup">Treatment Room Setup</label> <input class="w-full border border-gray-300 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" id="setup" type="number" value="0" /> <span class="tooltip"> <span class="tooltiptext">Initial investment in a massage table, facial steamer, decor, and other essential equipment.</span> </span></div>
+
+<div class="input-group"><label class="text-gray-700" for="supplies">Initial Product &amp; Supply Stock</label> <input class="w-full border border-gray-300 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" id="supplies" type="number" value="0" /> <span class="tooltip"> <span class="tooltiptext">The first purchase of professional products, lotions, oils, and disposable supplies.</span> </span></div>
+
+<div class="input-group"><label class="text-gray-700" for="marketing">Marketing &amp; Branding</label> <input class="w-full border border-gray-300 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" id="marketing" type="number" value="0" /> <span class="tooltip"> <span class="tooltiptext">Costs for logo design, business cards, social media profiles, and your initial website.</span> </span></div>
+
+<div class="input-group"><label class="text-gray-700" for="website">Website &amp; Booking System</label> <input class="w-full border border-gray-300 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" id="website" type="number" value="0" /> <span class="tooltip"> <span class="tooltiptext">Costs to create a website and set up an online booking system for appointments.</span> </span></div>
+
+<div class="input-group"><label class="text-gray-700" for="miscOneTime">Miscellaneous</label> <input class="w-full border border-gray-300 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" id="miscOneTime" type="number" value="0" /> <span class="tooltip"> <span class="tooltiptext">Any other unforeseen one-time costs, like initial legal fees.</span> </span></div>
+</div>
+</div>
+<!-- Monthly Operating Costs Section -->
+
+<div>
+<h2 class="text-2xl font-bold text-gray-700 section-header flex items-center mb-4">Monthly Costs</h2>
+
+<div class="space-y-4">
+<div class="input-group"><label class="text-gray-700" for="rent">Studio/Room Rental</label> <input class="w-full border border-gray-300 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" id="rent" type="number" value="0" /> <span class="tooltip"> <span class="tooltiptext">Monthly rent for your private studio, room, or chair rental.</span> </span></div>
+
+<div class="input-group"><label class="text-gray-700" for="utilities">Utilities &amp; Internet</label> <input class="w-full border border-gray-300 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" id="utilities" type="number" value="0" /> <span class="tooltip"> <span class="tooltiptext">Monthly costs for electricity, water, and internet bills.</span> </span></div>
+
+<div class="input-group"><label class="text-gray-700" for="suppliesMonthly">Supplies &amp; Products</label> <input class="w-full border border-gray-300 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" id="suppliesMonthly" type="number" value="0" /> <span class="tooltip"> <span class="tooltiptext">Ongoing costs for restocking your supplies and retail products.</span> </span></div>
+
+<div class="input-group"><label class="text-gray-700" for="insurance">Insurance</label> <input class="w-full border border-gray-300 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" id="insurance" type="number" value="0" /> <span class="tooltip"> <span class="tooltiptext">Monthly cost of business liability and professional insurance policies.</span> </span></div>
+
+<div class="input-group"><label class="text-gray-700" for="development">Professional Development</label> <input class="w-full border border-gray-300 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" id="development" type="number" value="0" /> <span class="tooltip"> <span class="tooltiptext">Fees for advanced training, workshops, and continuing education.</span> </span></div>
+
+<div class="input-group"><label class="text-gray-700" for="miscMonthly">Miscellaneous</label> <input class="w-full border border-gray-300 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" id="miscMonthly" type="number" value="0" /> <span class="tooltip"> <span class="tooltiptext">Any other unforeseen monthly costs.</span> </span></div>
+
+<div class="input-group"><label class="text-gray-700" for="months">Months to Fund</label> <input class="w-full border border-gray-300 rounded-lg p-3 focus:ring-blue-500 focus:border-blue-500" id="months" type="number" value="3" /> <span class="tooltip"> <span class="tooltiptext">The number of months you need to cover expenses before becoming profitable.</span> </span></div>
+</div>
+</div>
+</div>
+<!-- Results Section -->
+
+<div class="mt-10 p-6 bg-blue-50 rounded-2xl border border-blue-200">
+<h2 class="text-2xl font-bold text-blue-800 mb-4 text-center">Your Estimated Startup Costs</h2>
+
+<div class="flex flex-col sm:flex-row justify-around items-center space-y-4 sm:space-y-0 text-center">
+<div class="flex flex-col items-center">
+<p class="text-xl text-gray-700 font-medium">Total One-Time Costs</p>
+
+<p class="text-3xl font-bold text-blue-600" id="oneTimeCost">$0</p>
+</div>
+
+<div class="flex flex-col items-center">
+<p class="text-xl text-gray-700 font-medium">Total Monthly Costs</p>
+
+<p class="text-3xl font-bold text-blue-600" id="monthlyCost">$0</p>
+</div>
+
+<div class="flex flex-col items-center">
+<p class="text-xl text-gray-700 font-medium">Total Startup Capital Needed</p>
+
+<p class="text-3xl font-bold text-blue-600" id="totalCost">$0</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+        const inputs = document.querySelectorAll('input[type="number"]');
+        const oneTimeCostElem = document.getElementById('oneTimeCost');
+        const monthlyCostElem = document.getElementById('monthlyCost');
+        const totalCostElem = document.getElementById('totalCost');
+
+        function calculateCosts() {
+            const oneTimeCosts = ['licensing', 'setup', 'supplies', 'marketing', 'website', 'miscOneTime'];
+            const monthlyCosts = ['rent', 'utilities', 'suppliesMonthly', 'insurance', 'development', 'miscMonthly'];
+            const monthsToFund = parseFloat(document.getElementById('months').value) || 0;
+
+            let totalOneTime = 0;
+            oneTimeCosts.forEach(id => {
+                totalOneTime += parseFloat(document.getElementById(id).value) || 0;
+            });
+
+            let totalMonthly = 0;
+            monthlyCosts.forEach(id => {
+                totalMonthly += parseFloat(document.getElementById(id).value) || 0;
+            });
+
+            const totalStartupCapital = totalOneTime + (totalMonthly * monthsToFund);
+
+            oneTimeCostElem.textContent = `$${totalOneTime.toLocaleString()}`;
+            monthlyCostElem.textContent = `$${totalMonthly.toLocaleString()}`;
+            totalCostElem.textContent = `$${totalStartupCapital.toLocaleString()}`;
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('input', calculateCosts);
+        });
+
+        // Initial calculation on page load
+        calculateCosts();
+    </script>
