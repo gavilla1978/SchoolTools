@@ -33,11 +33,9 @@
 </head>
 <body class="flex items-center justify-center min-h-screen p-4">
 
-    <!-- Main Content Card -->
     <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-2xl">
-        <!-- Logo Section -->
         <div class="flex justify-center mb-6">
-            <img src="https://lirp.cdn-website.com/fdd2293f/dms3rep/multi/opt/spatech-logo-1920w.png" alt="Solo Practice Logo" class="h-32 w-32 object-contain mx-auto">
+            <img src="https://lirp.cdn-website.com/fdd2293f/dms3rep/multi/opt/spatech-logo-1920w.png" alt="SpaTech Logo" class="h-32 w-32 object-contain mx-auto">
         </div>
 
         <h1 class="text-3xl font-bold text-center mb-2">Mission Statement Helper</h1>
@@ -45,9 +43,7 @@
             Answer a few simple questions to create a powerful mission statement for your practice.
         </p>
 
-        <!-- Input Form -->
         <div class="space-y-6">
-            <!-- Target Audience -->
             <div>
                 <label for="audience" class="block text-sm font-medium text-gray-700">Who do you serve?</label>
                 <div class="flex items-center mt-1">
@@ -65,7 +61,6 @@
                 </div>
             </div>
 
-            <!-- Service -->
             <div>
                 <label for="service" class="block text-sm font-medium text-gray-700">What specific service do you provide?</label>
                 <div class="flex items-center mt-1">
@@ -83,7 +78,6 @@
                 </div>
             </div>
 
-            <!-- Benefit -->
             <div>
                 <label for="benefit" class="block text-sm font-medium text-gray-700">What is the result or benefit for them?</label>
                 <div class="flex items-center mt-1">
@@ -101,7 +95,6 @@
                 </div>
             </div>
 
-            <!-- Core Value -->
             <div>
                 <label for="core-value" class="block text-sm font-medium text-gray-700">What is your core value or belief?</label>
                 <div class="flex items-center mt-1">
@@ -120,18 +113,15 @@
             </div>
         </div>
 
-        <!-- Call to Action -->
         <div class="mt-6">
             <button onclick="generateStatements()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:scale-105">
                 Generate My Mission Statements
             </button>
         </div>
         
-        <!-- Generated Options Section -->
         <div id="generated-options" class="mt-6 p-4 bg-gray-100 rounded-lg hidden">
         </div>
 
-        <!-- Final Statement & Save Section -->
         <div id="edit-and-save-section" class="mt-6 p-4 bg-gray-100 rounded-lg hidden">
             <h2 class="text-xl font-bold text-center mb-4">Edit & Save Your Final Statement</h2>
             <textarea id="final-statement" class="w-full h-32 p-3 rounded-md border-gray-300 shadow-sm text-gray-800"></textarea>
@@ -142,7 +132,6 @@
             </div>
         </div>
 
-        <!-- Saved Statement Section -->
         <div id="saved-statement-section" class="mt-6 p-4 bg-white rounded-lg shadow-inner hidden">
             <h2 class="text-xl font-bold text-center mb-4">Your Saved Mission Statement</h2>
             <div class="p-4 bg-gray-100 rounded-lg shadow-sm">
@@ -155,7 +144,6 @@
             </div>
         </div>
 
-        <!-- Status Message -->
         <p id="status-message" class="text-center mt-4 text-gray-500"></p>
     </div>
 
@@ -269,5 +257,6 @@
     </script>
 </body>
 </html>
+
 
 
